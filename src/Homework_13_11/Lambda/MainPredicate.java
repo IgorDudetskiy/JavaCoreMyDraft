@@ -26,7 +26,7 @@ public class MainPredicate {
         evaluate(list, (n)-> n > 5 );
 
         List<Integer> list2 = Arrays.asList(1,2,3,4,5,6,7);
-        list2.stream().map((x) -> x*x).forEach(System.out::print);
+        list2.stream().map((x) -> x*x).forEach(System.out::println);
         System.out.println("");
 
         List<Integer> list3 = Arrays.asList(1,2,3,4,5,6,7);
