@@ -17,21 +17,13 @@ public class Plant {
     }
 
     enum Color {
-        BLUE("BLUE"),
-        GREEN("GREEN"),
-        RED("RED"),
-        PURPLE("PURPLE"),
-        YELLOW("YELLOW");
+        BLUE("BLUE"), GREEN("GREEN"), RED("RED"), PURPLE("PURPLE"), YELLOW("YELLOW");
 
         Color(String color) {
         }
     }
     enum Type {
-        HERBS("HERBS"),
-        SHRUBS("SHRUBS"),
-        TREES("TREES"),
-        CLIMBERS("CLIMBERS"),
-        CREEPERS("CREEPERS");
+        HERBS("HERBS"), SHRUBS("SHRUBS"), TREES("TREES"), CLIMBERS("CLIMBERS"), CREEPERS("CREEPERS");
 
         Type(String type) {
         }
@@ -41,10 +33,11 @@ class ColorException extends Throwable {
     static void doColor(Plant.Color color) throws ColorException {
         for (Plant.Color c : Plant.Color.values()) {
             if (Plant.Color.valueOf(c.name()).equals(color)) {
+
                 System.out.println("Color exists");
             } else {
                 throw new ColorException();
-            }
+            }System.out.println(c.name());
         }
 //        List<Plant.Color> plantColors = Arrays.asList(Plant.Color.values());
 //        if(plantColors.contains(color)){
@@ -61,6 +54,7 @@ class TypeException extends Throwable {
         for (Plant.Type c : Plant.Type.values()) {
             if (Plant.Type.valueOf(c.name()).equals(type)) {
                 System.out.println("Type exists");
+                System.out.println(Plant.Type.valueOf("f"));
             } else {
                 throw new TypeException();
             }
@@ -79,9 +73,8 @@ class MainPlant {
 
         try {
             doType(Plant.Type.valueOf("HERBS"));
-            doColor(Plant.Color.valueOf("RED"));
-        }catch (ColorException e){
-            System.out.println("Color isn't exist");
+            //doColor(Plant.Color.valueOf("RED"));
+       //    System.out.println("Color isn't exist");
         }catch (TypeException t){
             System.out.println("Type isn't exist");
         }catch (IllegalArgumentException i){
