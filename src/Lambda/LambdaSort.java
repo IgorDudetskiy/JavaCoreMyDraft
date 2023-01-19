@@ -1,8 +1,10 @@
-package HW4_13_11_InnerClasses.Lambda;
+package Lambda;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-public class Demo {
+public class LambdaSort {
     public static void main(String[] args)
     {
         ArrayList<Integer> al = new ArrayList<Integer>();
@@ -15,10 +17,14 @@ public class Demo {
                 "before sorting : " + al);
 
         // using lambda expression in place of comparator object
-        Collections.sort(al, (o1, o2) -> (o1 > o2) ? -1 :
-                (o1 < o2) ? 1 : 0);
+        al.sort(Comparator.reverseOrder());
+        System.out.println("Elements of the ArrayList after" +
+                " reverseOrder() : " + al);
+        al.sort(Comparator.naturalOrder());
 
         System.out.println("Elements of the ArrayList after" +
-                " sorting : " + al);
+                " naturalOrder() : " + al);
+
+
     }
 }

@@ -1,6 +1,6 @@
 package Lambda;
 
-public class MethodLambda {
+public class ExpressionApp {
 
     public static void main(String[] args) {
 
