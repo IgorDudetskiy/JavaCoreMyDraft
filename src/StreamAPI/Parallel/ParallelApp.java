@@ -23,6 +23,16 @@ public class ParallelApp {
         Stream<Integer> numbersStream1 = Stream.of(1, 2, 3, 4, 5, 6);
         Integer result1 = numbersStream1.parallel().reduce(1, (x,y)->x * y);
         System.out.println(result1);
+
+        List<String> p = Arrays.asList("Tom","Bob", "Sam", "Kate", "Tim");
+        p.parallelStream()//чтобы сохранить порядок следования, необходимо применять метод forEachOrdered:
+                .sorted()
+                .forEachOrdered(s->System.out.print(s+" "));
+        System.out.println();
+        p.parallelStream()
+                .sorted()
+                .unordered()//если нам порядок не важен, то мы можем отключить его сохранение, использовав метод unordered:
+                .forEach(s->System.out.print(s+" "));
     }
 }
 //Чтобы сделать обычный последовательный поток параллельным, надо вызвать у объекта Stream метод parallel.
