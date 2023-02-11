@@ -1,5 +1,7 @@
 package Plant;
 
+import java.util.Objects;
+
 public class Plant {
     private Type type;
     private Color color;
@@ -31,7 +33,7 @@ public class Plant {
                 ", name: " + name +
                 '}';
     }
-    public String tryColor(String color) throws ColorException {
+    public static String tryColor(String color) throws ColorException {
         switch(color.toUpperCase()) {
             case "WHITE":
                 return color.toUpperCase();
@@ -43,7 +45,7 @@ public class Plant {
                 throw new ColorException(color);
         }
     }
-    public String tryType(String type) throws TypeException {
+    public static String tryType(String type) throws TypeException {
         switch(type.toUpperCase()) {
             case "RARE":
                 return type.toUpperCase();
@@ -53,7 +55,23 @@ public class Plant {
                 throw new TypeException(type);
         }
     }
+
+
+    public static Plant tryCreatePlant(String type, String color, String name) {
+        Plant plant = null;
+        try {
+            tryType(type);
+            tryColor(color);
+            return new Plant(type,color,name);
+        } catch (ColorException e) {
+            e.printStackTrace();
+        } catch (TypeException e) {
+            e.printStackTrace();
+        }
+        return plant;
+    }
 }
+
 class TypeException extends Exception{
     private String message;
 
@@ -123,5 +141,12 @@ enum Type {
     @Override
     public String toString() {
         return type;
+    }
+}
+class Main{
+    public static void main(String[] args) throws ColorException, TypeException {
+        Plant plant = new Plant("Rare","red","name");
+        plant = Plant.tryCreatePlant("Rare","red","neam");
+        System.out.println(plant);
     }
 }
